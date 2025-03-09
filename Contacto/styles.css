@@ -1,0 +1,12 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.social-icons a {
+    color: #000;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #007bff; /* Color azul al pasar el mouse sobre los iconos */
+}

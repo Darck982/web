@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<head>
+    <html>
+<head>
+    <title>Variedad para todos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <script>
+let cart = [];
+
+function addToCart(product) {
+    cart.push(product);
+    updateCart();
+}
+
+function removeFromCart(productName) {
+    const index = cart.findIndex(product => product.name === productName);
+    if (index !== -1) {
+        cart.splice(index, 1);
+        updateCart();
+    }
+}
+function updateCart() {
+    const cartElement = document.getElementById('cart');
+    cartElement.innerHTML = '';
+    cart.forEach((product, index) => {
+        const productElement = document.createElement('div');
+        productElement.className = 'flex justify-between items-center p-2 border-b';
+        productElement.innerHTML = `
+            <span>${product.name} - ${product.price}</span>
+            <button class="text-red-500" onclick="removeFromCart('${product.name}')">Eliminar</button>
+        `;
+        cartElement.appendChild(productElement);
+    });
+    document.getElementById('cart-count').innerText = cart.length;
+    document.getElementById('cart-total').innerText = cart.reduce((total, product) => total + product.price, 0).toFixed(2);
+}
+
+function checkout() {
+    alert('Llevando a pagar...');
+    // Aquí puedes redirigir a la página de pago o realizar otras acciones
+}
+
+function toggleCart() {
+    const cartModal = document.getElementById('cart-modal');
+    cartModal.classList.toggle('hidden');
+}
+    </script>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <div class="bg-gray-800 p-4 flex items-center justify-between">
+        <div class="relative ml-4">
+        </div>
+        <div class="flex items-center">
+            <div class="relative">
+                <i class="fas fa-shopping-cart text-white cursor-pointer" onclick="toggleCart()"></i>
+                <span class="absolute top-0 right-0 bg-yellow-400 text-xs rounded-full px-1" id="cart-count">0</span>
+            </div>
+            <span class="text-white ml-2">MXN <span id="cart-total">0.00</span></span>
+        </div>
+    </div>
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-800 p-4">
+        <ul class="flex justify-center space-x-4 text-white">
+            <li><a class="hover:underline" href="../Inicio/index.html">Inicio</a></li>
+            <li><a class="hover:underline" href="../Nosotros/Nosotros.html">Nosotros</a></li>
+            <li><a class="hover:underline" href="../Servicio/Servicio.html">Servicios</a></li>
+            <li><a class="hover:underline" href="../Contacto/Contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+    <!-- Encabezado -->
+      <h1 class="text-4xl font-extrabold">
+     BEBIDAS
+    </h1>
+    <!-- Main Content -->
+    <div class="p-4">
+        <h1 class="text-xl font-bold bg[#000000] "> Una Gran Variedad Para Todo</h1>
+        <p class="text-gray-500">Hasta 30%</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+<!-- Product 1 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Jarito_Tutti .jpg" alt="Refresco Jarrito sabor tutti fruti 2 l" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Jarrito frutti 2L', price: 26.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Jarrito frutti 2L')">Eliminar</button>
+            <div class="text-green-600 font-bold">$26 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Jarrito</div>
+            <div class="text-gray-500 text-sm">Refresco jarrito sabor tutti frutti 2l </div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 2 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Jarito_Piña.jpg" alt="Refresco Jarrito sabor Piña 2 l" class="rounded-lg shadow-lg mx-auto mb-2" height="99" width="99">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Jarrito Piña 2L', price: 26.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Jarrito Piña 2L')">Eliminar</button>
+            <div class="text-green-600 font-bold">$26 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Jarrito</div>
+            <div class="text-gray-500 text-sm">Refresco jarrito sabor Piña 2l </div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 3 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Jarito_Tamarindo .jpg" alt="Refresco Jarrito sabor Tamarindo 2 l" class="rounded-lg shadow-lg mx-auto mb-2" height="96" width="96">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Jarrito Tamarindo 2L', price: 26.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Jarrito Tamarindo 2L')">Eliminar</button>
+            <div class="text-green-600 font-bold">$26 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Jarrito</div>
+            <div class="text-gray-500 text-sm">Refresco jarrito sabor Tamarindo 2l </div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 4 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Jarito_Mandarina .jpg" alt="Refresco Jarrito sabor Mandarina 2 l" class="rounded-lg shadow-lg mx-auto mb-2" height="96" width="96">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Jarrito Mandarina 2L', price: 26.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Jarrito Mandarina 2L')">Eliminar</button>
+            <div class="text-green-600 font-bold">$26 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Jarrito</div>
+            <div class="text-gray-500 text-sm">Refresco jarrito sabor Mandarina 2l </div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 5 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Jarito_Toronjita .jpg" alt="Refresco Jarrito sabor Tonrojita 2 l" class="rounded-lg shadow-lg mx-auto mb-2" height="10" width="105">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Jarrito Tonrojita 2L', price: 26.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Jarrito Tonrojita 2L')">Eliminar</button>
+            <div class="text-green-600 font-bold">$26 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Jarrito</div>
+            <div class="text-gray-500 text-sm">Refresco jarrito sabor Tonrojita 2l </div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 6 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+   </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Zuko_ PiÑa Colada .jpg" alt="Bebida en polvo Zuko Piña Colada" class="rounded-lg shadow-lg mx-auto mb-2" height="250" width="250">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Zuko Piña Colada', price: 5.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Zuko Piña Colada')">Eliminar</button>
+            <div class="text-green-600 font-bold">$5 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Zuko</div>
+            <div class="text-gray-500 text-sm">Bebida en polvo Zuko Sabor Piña Colada 15 g</div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 7 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+    </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Zuko_Durazno.jpg" alt="Bebida en polvo Zuko Durazno Colada" class="rounded-lg shadow-lg mx-auto mb-2" height="250" width="250">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Zuko Piña Durazno', price: 5.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Zuko Piña Durazno')">Eliminar</button>
+            <div class="text-green-600 font-bold">$5 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Zuko</div>
+            <div class="text-gray-500 text-sm">Bebida en polvo Zuko Sabor Durazno 15 g</div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 8 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+    </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Zuko_Horchata.jpg" alt="Bebida en polvo Zuko Horchata" class="rounded-lg shadow-lg mx-auto mb-2" height="250" width="250">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Zuko Horchata', price: 5.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Zuko Horchata')">Eliminar</button>
+            <div class="text-green-600 font-bold">$5 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Zuko</div>
+            <div class="text-gray-500 text-sm">Bebida en polvo Zuko Sabor Horchata 15 g</div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 9 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+    </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Zuko_Jamaica.jpg" alt="Bebida en polvo Zuko Jamaica" class="rounded-lg shadow-lg mx-auto mb-2" height="250" width="250">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Zuko Jamaica', price: 5.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Zuko Jamaica')">Eliminar</button>
+            <div class="text-green-600 font-bold">$5 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Zuko</div>
+            <div class="text-gray-500 text-sm">Bebida en polvo Zuko Sabor Jamaica 15 g</div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 10 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+    </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Zuko_Limón.jpg" alt="Bebida en polvo Zuko Limón" class="rounded-lg shadow-lg mx-auto mb-2" height="250" width="250">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Zuko Limón', price: 5.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Zuko Limón')">Eliminar</button>
+            <div class="text-green-600 font-bold">$5 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Zuko</div>
+            <div class="text-gray-500 text-sm">Bebida en polvo Zuko Sabor Limón 15 g</div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 11 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+    </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Zuko_Naraja.jpg" alt="Bebida en polvo Zuko Melón" class="rounded-lg shadow-lg mx-auto mb-2" height="250" width="250">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Zuko Naranja', price: 5.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Zuko Naranja')">Eliminar</button>
+            <div class="text-green-600 font-bold">$5 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Zuko</div>
+            <div class="text-gray-500 text-sm">Bebida en polvo Zuko Sabor Naranja 15 g</div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 12 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+    </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Zuko_Tamarindo.jpg" alt="Bebida en polvo Zuko Tamarindo" class="rounded-lg shadow-lg mx-auto mb-2" height="250" width="250">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Zuko Tamarindo', price: 5.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Zuko Tamarindo')">Eliminar</button>
+            <div class="text-green-600 font-bold">$5 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Zuko</div>
+            <div class="text-gray-500 text-sm">Bebida en polvo Zuko Sabor Tamarindo 15 g</div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 13 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+    </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Zuko_Te_Limón.jpg" alt="Bebida en polvo Té Limón" class="rounded-lg shadow-lg mx-auto mb-2" height="250" width="250">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Zuko Té Limón', price: 5.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Zuko Té Limón')">Eliminar</button>
+            <div class="text-green-600 font-bold">$5 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Zuko</div>
+            <div class="text-gray-500 text-sm">Bebida en polvo Zuko Sabor Té Limón 15 g</div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 14 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+    </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Zuko_Uva.jpg" alt="Bebida en polvo Té Durazno" class="rounded-lg shadow-lg mx-auto mb-2" height="250" width="250">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Zuko Uva', price: 5.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Zuko Uva')">Eliminar</button>
+            <div class="text-green-600 font-bold">$5 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Zuko</div>
+            <div class="text-gray-500 text-sm">Bebida en polvo Zuko Sabor Uva 15 g</div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 15 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+    </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Boing_Durazno_ 25ml.jpg" alt="Bebida Boing Durazno 250 ml" class="rounded-lg shadow-lg mx-auto mb-2" height="210" width="210">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Boing Durazno 250ml', price: 5.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Boing Durazno 250ml')">Eliminar</button>
+            <div class="text-green-600 font-bold">$10.50 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Boing</div>
+            <div class="text-gray-500 text-sm">Bebida Boing con 12% pulpa de mango 250 ml</div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 16 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+    </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Boing_Fresa_ 25ml.jpg" alt="Bebida Boing Fresa 250 ml" class="rounded-lg shadow-lg mx-auto mb-2" height="210" width="210">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Boing Fresa 250ml', price: 5.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Boing Fresa 250ml')">Eliminar</button>
+            <div class="text-green-600 font-bold">$10.50 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Boing</div>
+            <div class="text-gray-500 text-sm">Bebida Boing con 12% pulpa de Fresa 250 ml</div>
+        </h2>             
+    </div>
+</div>
+
+<!-- Product 18 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+    </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Boing_Mango_ 25ml.jpg" alt="Bebida Boing Mango 250 ml" class="rounded-lg shadow-lg mx-auto mb-2" height="210" width="210">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Boing Mango 250ml', price: 5.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Boing Mango 250ml')">Eliminar</button>
+            <div class="text-green-600 font-bold">$10.50 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Boing</div>
+            <div class="text-gray-500 text-sm">Bebida Boing con 12% pulpa de Mango 250 ml</div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 19 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+    </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Boing_Manzana_ 25ml.jpg" alt="Bebida Boing Manzana 250 ml" class="rounded-lg shadow-lg mx-auto mb-2" height="210" width="210">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Boing Manzana 250ml', price: 5.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Boing Manzana 250ml')">Eliminar</button>
+            <div class="text-green-600 font-bold">$10.50 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Boing</div>
+            <div class="text-gray-500 text-sm">Bebida Boing con 12% pulpa de Manzana 250 ml</div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 20 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+    </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Boing_Naranja_ 25ml.jpg" alt="Bebida Boing Naranja 250 ml" class="rounded-lg shadow-lg mx-auto mb-2" height="210" width="210">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Boing Naranja 250ml', price: 5.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Boing Naranja 250ml')">Eliminar</button>
+            <div class="text-green-600 font-bold">$10.50 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Boing</div>
+            <div class="text-gray-500 text-sm">Bebida Boing con 12% pulpa de Naranja 250 ml</div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 21 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+    </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Boing_Uva_ 25ml.jpg" alt="Bebida Boing Uva 250 ml" class="rounded-lg shadow-lg mx-auto mb-2" height="210" width="210">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Boing Uva 250ml', price: 5.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Boing Uva 250ml')">Eliminar</button>
+            <div class="text-green-600 font-bold">$10.50 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Boing</div>
+            <div class="text-gray-500 text-sm">Bebida Boing con 12% pulpa de Uva 250 ml</div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 23 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+    </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Peñafiel 600ml.jpg" alt="Agua mineral Peñafiel 600 ml" class="rounded-lg shadow-lg mx-auto mb-2" height="96" width="96">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Peñafiel mineral 600ml', price: 18.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Peñafiel mineral 600ml')">Eliminar</button>
+            <div class="text-green-600 font-bold">$18.00 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Peñafiel</div>
+            <div class="text-gray-500 text-sm">Agua mineral Peñafiel 600 ml
+            </div>
+        </h2>             
+    </div>
+</div>
+<!-- Product 24 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+    </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Peñafiel_Manzana_2l.jpg" alt="Agua mineral Peñafiel sabor Manzana 2l" class="rounded-lg shadow-lg mx-auto mb-2" height="96" width="96">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Agua mineral Peñafiel sabor Manzana 2l', price: 26.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Agua mineral Peñafiel sabor Manzana 2l')">Eliminar</button>
+            <div class="text-green-600 font-bold">$26.00 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Peñafiel</div>
+            <div class="text-gray-500 text-sm">Agua mineral Peñafiel sabor Manzana 2 l
+            </div>
+        </h2>             
+    </div>
+</div>
+    <!-- Product 26 -->
+    <div class="border p-4 rounded-lg">
+        <div class="flex justify-between items-center mb-6">
+        </div>
+        <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+            <h2 class="text-xl font-semibold mb-2"></h2>
+            <img src="Epura 20Lt.jpg" alt="Epura 20 l únicamente liq" class="rounded-lg shadow-lg mx-auto mb-2" height="150" width="150">
+            <h2>
+                <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Epura 20 l úni liq', price: 55.00})">+ Agregar</button>
+                <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Epura 20 l úni liq')">Eliminar</button>
+                <div class="text-green-600 font-bold">$55.00 <span class="line-through text-gray-500"></span></div>
+                <div class="text-green-600 text-xs"></div>
+                <div class="text-gray-700 font-bold">Epura</div>
+                <div class="text-gray-500 text-sm">Agua Epura 20 l únicamente liquído
+                </div>
+            </h2>             
+        </div>  
+</div>
+     <!-- Product 28 -->
+   <div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+    </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Agua Pura.jpeg" alt="Agua Pura 1 l mineral" class="rounded-lg shadow-lg mx-auto mb-2" height="96" width="96">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Agua pura 1 l', price: 12.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Agua pura 1 l')">Eliminar</button>
+            <div class="text-green-600 font-bold">$12.00 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Agua</div>
+            <div class="text-gray-500 text-sm">Agua Pura 1 l mineral
+            </div>
+        </h2>             
+    </div>
+</div>  
+    <!-- Cart Modal -->
+<div id="cart-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
+    <div class="bg-white p-4 rounded-lg w-1/2">
+        <h2 class="text-xl font-bold mb-4">Carrito de Compras</h2>
+        <div id="cart" class="border p-4 rounded-lg mb-4"></div>
+        <button class="bg-green-600 text-white px-4 py-2 rounded-full w-full" onclick="checkout()">Pagar</button>
+        <button class="mt-2 bg-red-600 text-white px-4 py-2 rounded-full w-full" onclick="clearCart()">Vaciar Carrito</button>
+        <button class="mt-2 bg-blue-600 text-white px-4 py-2 rounded-full w-full" onclick="toggleCart()">Cerrar</button>
+    </div>
+</div>
+
+<script>
+    // Función para vaciar el carrito
+    function clearCart() {
+        cart = []; // Vaciar el array del carrito
+        updateCart(); // Actualizar la interfaz
+    }
+</script>
+    </body>
+</html>
+
+

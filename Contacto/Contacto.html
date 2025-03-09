@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montero Supermarket</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Encabezado -->
+    <header class="bg-gray-800 text-white p-4 flex justify-between items-center">
+        <div class="text-xl font-bold">
+            <span class="text-blue-500">MONTERO</span> SUPERMARKET
+        </div>
+        <nav>
+            <ul class="flex space-x-4">
+                <li><a href="../Inicio/index.html" class="hover:text-gray-400">INICIO</a></li>
+                <li><a href="../Nosotros/Nosotros.html" class="hover:text-gray-400">NOSOTROS</a></li>
+                <li><a href="../Servicio/Servicio.html" class="hover:text-gray-400">SERVICIOS</a></li>
+                <li><a href="..//Contacto/Contacto.html" class="hover:text-gray-400">CONTACTO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="p-8">
+        <h1 class="text-lg font-bold text-center mb-4">Los mejores productos al mejor precio</h1>
+
+        <!-- Formulario de contacto -->
+        <section class="bg-white p-6 rounded-lg shadow-lg max-w-lg mx-auto">
+            <h2 class="text-2xl font-bold mb-4">Contacto</h2>
+            <form id="contact-form">
+                <div class="mb-3">
+                    <label for="name" class="block">Nombre</label>
+                    <input type="text" id="name" class="border border-gray-400 p-2 w-full" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="block">Correo Electrónico</label>
+                    <input type="email" id="email" class="border border-gray-400 p-2 w-full" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="block">Mensaje</label>
+                    <textarea id="message" class="border border-gray-400 p-2 w-full" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="bg-gray-800 text-white p-2 w-full">Enviar</button>
+            </form>
+        </section>
+
+        <!-- Redes sociales -->
+        <section class="mt-8 text-center">
+            <h2 class="text-xl font-bold mb-4">Síguenos en nuestras redes sociales</h2>
+            <div class="flex justify-center space-x-4 text-2xl">
+                <a href="https://wa.me/+529612478059" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="mailto:luisalfonsoml002@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+529612478059"><i class="fas fa-phone"></i></a>
+            </div>
+        </section>
+
+        <!-- Mapa -->
+        <section class="mt-8">
+            <h2 class="text-xl font-bold mb-4 text-center">Ubicación</h2>
+            <head>
+                <style>
+                    #mapa{
+            margin: 0 auto;
+            background-color: gainsboro;
+            border-radius: 5px;
+            display: flexy;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+                    }
+            
+                    #mapa h1{
+                        text-align: center;
+                        color: wheat;
+                    }
+            
+                    #frameMapa{
+                        border-radius: 5px;
+                        margin: 15px;
+                    }
+                </style>
+        <div id="mapa">
+        <h1>CAMP NOU</h1>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d238.77094267792333!2d-93.1209829459564!3d16.75999654009981!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ecd8ed972f89d7%3A0x901cc7dc555212bd!2sCISCO%20English%20Tutoring.Ingl%C3%A9s%20como%20es.%20Cursos%20y%20Preparaci%C3%B3n%20para%20TOEFL!5e0!3m2!1ses-419!2smx!4v1741224385438!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>    
+            </head>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="bg-gray-800 text-white text-center py-3 mt-8">
+        <p>&copy; 2023 Montero Supermarket. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Google Maps -->
+  
+</body>
+</html>

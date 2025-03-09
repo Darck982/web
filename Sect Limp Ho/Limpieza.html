@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<head>
+    <html>
+<head>
+    <title>Variedad para todos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <script>
+let cart = [];
+
+function addToCart(product) {
+    cart.push(product);
+    updateCart();
+}
+
+function removeFromCart(productName) {
+    const index = cart.findIndex(product => product.name === productName);
+    if (index !== -1) {
+        cart.splice(index, 1);
+        updateCart();
+    }
+}
+function updateCart() {
+    const cartElement = document.getElementById('cart');
+    cartElement.innerHTML = '';
+    cart.forEach((product, index) => {
+        const productElement = document.createElement('div');
+        productElement.className = 'flex justify-between items-center p-2 border-b';
+        productElement.innerHTML = `
+            <span>${product.name} - ${product.price}</span>
+            <button class="text-red-500" onclick="removeFromCart('${product.name}')">Eliminar</button>
+        `;
+        cartElement.appendChild(productElement);
+    });
+    document.getElementById('cart-count').innerText = cart.length;
+    document.getElementById('cart-total').innerText = cart.reduce((total, product) => total + product.price, 0).toFixed(2);
+}
+
+function checkout() {
+    alert('Llevando a pagar...');
+    // Aquí puedes redirigir a la página de pago o realizar otras acciones
+}
+
+function toggleCart() {
+    const cartModal = document.getElementById('cart-modal');
+    cartModal.classList.toggle('hidden');
+}
+    </script>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <div class="bg-gray-800 p-4 flex items-center justify-between">
+        <div class="relative ml-4">
+        </div>
+        <div class="flex items-center">
+            <div class="relative">
+                <i class="fas fa-shopping-cart text-white cursor-pointer" onclick="toggleCart()"></i>
+                <span class="absolute top-0 right-0 bg-yellow-400 text-xs rounded-full px-1" id="cart-count">0</span>
+            </div>
+            <span class="text-white ml-2">MXN <span id="cart-total">0.00</span></span>
+        </div>
+    </div>
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-800 p-4">
+        <ul class="flex justify-center space-x-4 text-white">
+            <li><a class="hover:underline" href="../Inicio/index.html">Inicio</a></li>
+            <li><a class="hover:underline" href="../Nosotros/Nosotros.html">Nosotros</a></li>
+            <li><a class="hover:underline" href="../Servicio/Servicio.html">Servicios</a></li>
+            <li><a class="hover:underline" href="../Contacto/Contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+    <!-- Encabezado -->
+      <h1 class="text-4xl font-extrabold">
+     FRUTAS Y VERDURAS
+    </h1>
+    <!-- Main Content -->
+    <div class="p-4">
+        <h1 class="text-xl font-bold bg[#000000] ">¡Lo más saludable!</h1>
+        <p class="text-gray-500"></p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+<!-- Product 1 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Axion Aroma Limón 1.1l.jpg" alt="Lavatraste Líquido Axion Aroma Limón 100% Efectivo Arrancargrasa 1.1 l" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Lavatraste Líqui Axion Limón 1.1 l', price: 69.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Lavatraste Líqui Axion Limón 1.1 l')">Eliminar</button>
+            <div class="text-green-600 font-bold">$69 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Axion</div>
+            <div class="text-gray-500 text-sm">Lavatraste Líquido Axion Aroma Limón 100% Efectivo Arrancargrasa 1.1 l </div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 2 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Blanqueador líquido Cloralex El Rendidor 2 l.jpg" alt="Blanqueador líquido Cloralex El Rendidor 2 l" class="rounded-lg shadow-lg mx-auto mb-2" height="160" width="160">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'líquido Cloralex El Rendidor 2 l', price: 24.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('líquido Cloralex El Rendidor 2 l')">Eliminar</button>
+            <div class="text-green-600 font-bold">$24 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Cloralex</div>
+            <div class="text-gray-500 text-sm">Blanqueador líquido Cloralex El Rendidor 2 l</div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 4 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Blanqueador líquido Cloralex El Rendidor 950 ml.jpg" alt="Blanqueador líquido Cloralex El Rendidor 950 ml" class="rounded-lg shadow-lg mx-auto mb-2" height="160" width="160">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'líquido Cloralex El Rendidor 950 ml', price: 59.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('líquido Cloralex El Rendidor 950 ml')">Eliminar</button>
+            <div class="text-green-600 font-bold">$59 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Cloralex</div>
+            <div class="text-gray-500 text-sm">Blanqueador líquido Cloralex El Rendidor 950 ml</div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 5 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Blanqueador líquido Cloralex El Rendidor 950 ml.jpg" alt="Blanqueador líquido Cloralex El Rendidor 950 ml" class="rounded-lg shadow-lg mx-auto mb-2" height="160" width="160">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'líquido Cloralex El Rendidor 950 ml', price: 59.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('líquido Cloralex El Rendidor 950 ml')">Eliminar</button>
+            <div class="text-green-600 font-bold">$59 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Cloralex</div>
+            <div class="text-gray-500 text-sm">Blanqueador líquido Cloralex El Rendidor 950 ml</div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 6 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Blanqueador ultragel Cloralex Max 950 ml.jpg" alt="Blanqueador ultragel Cloralex Max 950 ml" class="rounded-lg shadow-lg mx-auto mb-2" height="160" width="160">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Blan gel Cloralex 950 ml', price: 60.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Blan gel Cloralex 950 ml')">Eliminar</button>
+            <div class="text-green-600 font-bold">$60 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Cloralex</div>
+            <div class="text-gray-500 text-sm">Blanqueador ultragel Cloralex Max 950 mll</div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 7 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Fabuloso frutas 2 l.jpg" alt="Fabuloso frutas 2 l" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Fabuloso frutas 2 l', price: 39.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Fabuloso frutas 2 l')">Eliminar</button>
+            <div class="text-green-600 font-bold">$39 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Fabuloso</div>
+            <div class="text-gray-500 text-sm">Limpiador multiusos Fabuloso frescura activa pasión de frestas 2 l</div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 7 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Fabuloso Lavanda 2 L.jpg" alt="Fabuloso Lavanda 2 l" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Fabuloso Lavanda 2 l', price: 51.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Fabuloso Lavanda 2 l')">Eliminar</button>
+            <div class="text-green-600 font-bold">$51 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Fabuloso</div>
+            <div class="text-gray-500 text-sm">Limpiador multiusos Fabuloso Lavanda Antibacterial y Antivirial 2 l</div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 8 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Fabuloso Mar 2 L.jpg" alt="Fabuloso Mar 2 l" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Fabuloso Mar 2 l', price: 51.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Fabuloso Mar 2 l')">Eliminar</button>
+            <div class="text-green-600 font-bold">$51 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Fabuloso</div>
+            <div class="text-gray-500 text-sm">Limpiador multiusos Fabuloso Aroma Mar Fresco Antibacterial 2 l</div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 9 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Insecticida Baygon casa y jardín en aerosol 400 ml.jpg" alt="Insecticida Baygon casa y jardín en aerosol 400 ml.jpg" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Insecticida Baygon casa 400 ml', price: 75.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Insecticida Baygon casa 400 ml')">Eliminar</button>
+            <div class="text-green-600 font-bold">$75 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Baygon</div>
+            <div class="text-gray-500 text-sm">Insecticida Baygon casa y jardín en aerosol 400 ml</div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 10 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Insecticida Baygon en aerosol total insectos voladores y rastreros 430 ml.jpg" alt="Insecticida Baygon en aerosol total insectos voladores y rastreros 430 ml" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Insecticida Baygon volador y rastreros 430 ml', price: 60.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Insecticida Baygon volador y rastreros 430 ml')">Eliminar</button>
+            <div class="text-green-600 font-bold">$60 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Baygon</div>
+            <div class="text-gray-500 text-sm">Insecticida Baygon en aerosol total insectos voladores y rastreros 430 ml</div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 11 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="líquido Salvo limón 1.2 l.jpg" alt="líquido Salvo limón 1.2 l" class="rounded-lg shadow-lg mx-auto mb-2" height="260" width="260">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'líquido Salvo limón 1.2 l', price: 69.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('líquido Salvo limón 1.2 l')">Eliminar</button>
+            <div class="text-green-600 font-bold">$69 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Salvo</div>
+            <div class="text-gray-500 text-sm">líquido Salvo limón 1.2 l</div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 12 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="líquido Salvo limón 750 ml.jpg" alt="líquido Salvo limón 750 ml" class="rounded-lg shadow-lg mx-auto mb-2" height="260" width="260">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'líquido Salvo limón 750 ml', price: 45.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('líquido Salvo limón 750 ml')">Eliminar</button>
+            <div class="text-green-600 font-bold">$45 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Salvo</div>
+            <div class="text-gray-500 text-sm">líquido Salvo limón 750 ml</div>
+        </h2>             
+    </div>         
+</div>
+<!-- Cart Modal -->
+<div id="cart-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
+    <div class="bg-white p-4 rounded-lg w-1/2">
+        <h2 class="text-xl font-bold mb-4">Carrito de Compras</h2>
+        <div id="cart" class="border p-4 rounded-lg mb-4"></div>
+        <button class="bg-green-600 text-white px-4 py-2 rounded-full w-full" onclick="checkout()">Pagar</button>
+        <button class="mt-2 bg-red-600 text-white px-4 py-2 rounded-full w-full" onclick="clearCart()">Vaciar Carrito</button>
+        <button class="mt-2 bg-blue-600 text-white px-4 py-2 rounded-full w-full" onclick="toggleCart()">Cerrar</button>
+    </div>
+</div>
+
+<script>
+    // Función para vaciar el carrito
+    function clearCart() {
+        cart = []; // Vaciar el array del carrito
+        updateCart(); // Actualizar la interfaz
+    }
+</script>
+    </body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<head>
+    <html>
+<head>
+    <title>Variedad para todos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <script>
+let cart = [];
+
+function addToCart(product) {
+    cart.push(product);
+    updateCart();
+}
+
+function removeFromCart(productName) {
+    const index = cart.findIndex(product => product.name === productName);
+    if (index !== -1) {
+        cart.splice(index, 1);
+        updateCart();
+    }
+}
+function updateCart() {
+    const cartElement = document.getElementById('cart');
+    cartElement.innerHTML = '';
+    cart.forEach((product, index) => {
+        const productElement = document.createElement('div');
+        productElement.className = 'flex justify-between items-center p-2 border-b';
+        productElement.innerHTML = `
+            <span>${product.name} - ${product.price}</span>
+            <button class="text-red-500" onclick="removeFromCart('${product.name}')">Eliminar</button>
+        `;
+        cartElement.appendChild(productElement);
+    });
+    document.getElementById('cart-count').innerText = cart.length;
+    document.getElementById('cart-total').innerText = cart.reduce((total, product) => total + product.price, 0).toFixed(2);
+}
+
+function checkout() {
+    alert('Llevando a pagar...');
+    // Aquí puedes redirigir a la página de pago o realizar otras acciones
+}
+
+function toggleCart() {
+    const cartModal = document.getElementById('cart-modal');
+    cartModal.classList.toggle('hidden');
+}
+    </script>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <div class="bg-gray-800 p-4 flex items-center justify-between">
+        <div class="relative ml-4">
+        </div>
+        <div class="flex items-center">
+            <div class="relative">
+                <i class="fas fa-shopping-cart text-white cursor-pointer" onclick="toggleCart()"></i>
+                <span class="absolute top-0 right-0 bg-yellow-400 text-xs rounded-full px-1" id="cart-count">0</span>
+            </div>
+            <span class="text-white ml-2">MXN <span id="cart-total">0.00</span></span>
+        </div>
+    </div>
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-800 p-4">
+        <ul class="flex justify-center space-x-4 text-white">
+            <li><a class="hover:underline" href="../Inicio/index.html">Inicio</a></li>
+            <li><a class="hover:underline" href="../Nosotros/Nosotros.html">Nosotros</a></li>
+            <li><a class="hover:underline" href="../Servicio/Servicio.html">Servicios</a></li>
+            <li><a class="hover:underline" href="../Contacto/Contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+    <!-- Encabezado -->
+      <h1 class="text-4xl font-extrabold">
+     ABARROTES
+    </h1>
+    <!-- Main Content -->
+    <div class="p-4">
+        <h1 class="text-xl font-bold bg[#000000] "> Una Gran Variedad Para Todo</h1>
+        <p class="text-gray-500">Hasta 30%</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+<!-- Product 1 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Arroz Schettino 900 gr.jpg" alt="Arroz Schettino extra 900 g" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Arroz Schettino 900gr', price: 12.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Arroz Schettino 900gr')">Eliminar</button>
+            <div class="text-green-600 font-bold">$12 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Schettino</div>
+            <div class="text-gray-500 text-sm">Arroz Schettino extra 900 g</div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 4 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Frijol negro Verde 1 kg.jpg" alt="Frijol negro Verde Valle jamapa 1 kg" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Verde Valle Frijol 1kg', price: 75.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Verde Valle Frijol 1kg')">Eliminar</button>
+            <div class="text-green-600 font-bold">$75 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Schettino</div>
+            <div class="text-gray-500 text-sm">Frijol negro Verde Valle jamapa 1 kg</div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 5 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Pasta Barilla spaghetti N°5 500g.jpg" alt="Pasta Barilla spaghetti No.5 500 g" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Barilla spaghetti No.5 500 g', price: 22.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Barilla spaghetti No.5 500 g')">Eliminar</button>
+            <div class="text-green-600 font-bold">$22 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Barilla</div>
+            <div class="text-gray-500 text-sm">Pasta Barilla spaghetti No.5 500 g
+            </div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 6 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Pasta Barilla spaghetti N°7 500g.jpg" alt="Pasta Barilla spaghetti No.7 500 g" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Barilla spaghetti No.7 500 g', price: 22.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Barilla spaghetti No.7 500 g')">Eliminar</button>
+            <div class="text-green-600 font-bold">$22 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Barilla</div>
+            <div class="text-gray-500 text-sm">Pasta Barilla spaghetti No.7 500 g
+            </div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 7 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Sopa de codo Barilla N°2.jpg" alt="Sopa de codo Barilla No.2 200 g" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Barilla codo No.2 500 g', price: 14.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Barilla codo No.2 500 g')">Eliminar</button>
+            <div class="text-green-600 font-bold">$14 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Barilla</div>
+            <div class="text-gray-500 text-sm">Sopa de codo Barilla No.2 200 g
+            </div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 8 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Sopa de codo Barilla N°2.jpg" alt="Sopa de codo Barilla No.2 200 g" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Barilla fideo No.2 500 g', price: 14.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Barilla fideo No.2 500 g')">Eliminar</button>
+            <div class="text-green-600 font-bold">$14 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Barilla</div>
+            <div class="text-gray-500 text-sm">Sopa de fideo Barilla No.0 200 g
+            </div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 10 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Harina de trigo San Blas 1 kg.jpg" alt="Harina de trigo San Blas 1 kg" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Harina San Blas 1 kg', price: 21.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Harina San Blas 1 kg')">Eliminar</button>
+            <div class="text-green-600 font-bold">$21 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">San Blas</div>
+            <div class="text-gray-500 text-sm">Harina de trigo San Blas 1 kg
+            </div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 12 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Harina de maíz Maseca 1kg.jpg" alt="Harina de maíz Maseca nixtamalizado 1 kg" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Harina de maíz Maseca 1kg', price: 18.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Harina de maíz Maseca 1kg')">Eliminar</button>
+            <div class="text-green-600 font-bold">$18 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Maseca</div>
+            <div class="text-gray-500 text-sm">Harina de maíz Maseca nixtamalizado 1 kg
+            </div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 13 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Azúcar Zulka Morena 900 gr.jpg" alt="Azúcar Zulka Morena 900 gr" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Azúcar Zulka 900 gr', price: 30.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Azúcar Zulka 900 gr')">Eliminar</button>
+            <div class="text-green-600 font-bold">$30 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Zulka</div>
+            <div class="text-gray-500 text-sm">Azúcar Zulka 900 gr
+            </div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 14 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Azúcar Zulka Morena 2 kg.jpg" alt="Azúcar morena Zulka 2 kg" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Azúcar Zulka 2 kg', price: 30.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Azúcar Zulka 2 kg')">Eliminar</button>
+            <div class="text-green-600 font-bold">$30 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Zulka</div>
+            <div class="text-gray-500 text-sm">Azúcar Zulka 900 gr
+            </div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 15 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Aceite Gran Tradición 850 ml.jpg" alt="Aceite Vegetal Gran Tradición 850 ml" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Aceite Gran Tradición 850 ml', price: 29.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Aceite Gran Tradición 850 ml')">Eliminar</button>
+            <div class="text-green-600 font-bold">$29 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Gran Tradición</div>
+            <div class="text-gray-500 text-sm">Aceite Vegetal Gran Tradición 850 ml
+            </div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 17 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Actun Herdez 130 g.jpg" alt="Atún Herdez en agua 130 g" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Atún Herdez 130 g', price: 16.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Atún Herdez 130 g')">Eliminar</button>
+            <div class="text-green-600 font-bold">$16 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Herdez</div>
+            <div class="text-gray-500 text-sm">Atún Herdez en agua 130 g
+            </div>
+        </h2>             
+    </div>            
+</div>
+<!-- Product 19 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Pan Bimbo blanco 620 g.jpg" alt="Pan Bimbo blanco 620 g" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Pan Bimbo blan 620 g', price: 52.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Pan Bimbo blan 620 g')">Eliminar</button>
+            <div class="text-green-600 font-bold">$52 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Bimbo</div>
+            <div class="text-gray-500 text-sm">Pan Bimbo blanco 620 g
+            </div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 20 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Pan Bimbo Artesano hogaza multigrano 610 g.jpg" alt="Pan Bimbo Artesano hogaza 620 g" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Pan Bimbo Artesano hogaza 620 g', price: 56.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Pan Bimbo Artesano hogaza 620 g')">Eliminar</button>
+            <div class="text-green-600 font-bold">$56 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Bimbo</div>
+            <div class="text-gray-500 text-sm">Pan Bimbo Artesano hogaza multigrano 610 g
+            </div>
+        </h2>             
+    </div>         
+</div>
+<!-- Product 21 -->
+<div class="border p-4 rounded-lg">
+    <div class="flex justify-between items-center mb-6">
+        </div>
+    <div class="bg-white rounded-lg p-4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-2"></h2>
+        <img src="Salsa Herdez casera 200 g.jpg" alt="Salsa Herdez casera con chile habanero 200 g" class="rounded-lg shadow-lg mx-auto mb-2" height="88" width="88">
+        <h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="addToCart({name: 'Salsa Herdez casera 200 g', price: 12.00})">+ Agregar</button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-full w-full mb-2" onclick="removeFromCart('Salsa Herdez casera 200 g')">Eliminar</button>
+            <div class="text-green-600 font-bold">$12 <span class="line-through text-gray-500"></span></div>
+            <div class="text-green-600 text-xs"></div>
+            <div class="text-gray-700 font-bold">Herdes</div>
+            <div class="text-gray-500 text-sm">Salsa Herdez casera con chile habanero 200 g
+            </div>
+        </h2>             
+    </div>         
+</div>
+    <!-- Cart Modal -->
+<div id="cart-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
+    <div class="bg-white p-4 rounded-lg w-1/2">
+        <h2 class="text-xl font-bold mb-4">Carrito de Compras</h2>
+        <div id="cart" class="border p-4 rounded-lg mb-4"></div>
+        <button class="bg-green-600 text-white px-4 py-2 rounded-full w-full" onclick="checkout()">Pagar</button>
+        <button class="mt-2 bg-red-600 text-white px-4 py-2 rounded-full w-full" onclick="clearCart()">Vaciar Carrito</button>
+        <button class="mt-2 bg-blue-600 text-white px-4 py-2 rounded-full w-full" onclick="toggleCart()">Cerrar</button>
+    </div>
+</div>
+
+<script>
+    // Función para vaciar el carrito
+    function clearCart() {
+        cart = []; // Vaciar el array del carrito
+        updateCart(); // Actualizar la interfaz
+    }
+</script>
+    </body>
+</html>
+
+
